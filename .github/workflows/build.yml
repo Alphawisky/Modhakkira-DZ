@@ -2,7 +2,6 @@ name: Build Moudhakkira APK
 on:
   workflow_dispatch:
   push:
-    branches: [ main, master ]
 
 jobs:
   build:
@@ -17,12 +16,7 @@ jobs:
           distribution: 'temurin'
           java-version: '17'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@v3
-        with:
-          gradle-version: '8.5'
-
-      - name: Assemble Debug APK
+      - name: Build Debug APK
         run: gradle assembleDebug --no-daemon --stacktrace
 
       - name: Upload APK
